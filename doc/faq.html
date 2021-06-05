@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <title>Frequently Asked Questions (FAQ)</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta charset="utf-8">
 <meta name="Copyright" content="Copyright (C) 2005-2021">
 <meta name="Language" content="en">
 <link rel="stylesheet" type="text/css" href="bluequad.css" media="screen">
@@ -39,6 +39,8 @@ dd { margin-left: 1.5em; }
 </li><li>
 <a href="ext_ffi_semantics.html">FFI Semantics</a>
 </li></ul>
+</li><li>
+<a href="ext_buffer.html">String Buffers</a>
 </li><li>
 <a href="ext_jit.html">jit.* Library</a>
 </li><li>
@@ -131,6 +133,19 @@ and never falls back to the interpreter, the debug hook never runs and
 can't throw the "interrupted!" error.<br>
 You have to press Ctrl-C twice to get stop your program. That's similar
 to when it's stuck running inside a C function under the Lua interpreter.</dd>
+</dl>
+
+<dl id="order">
+<dt>Q: Table iteration with <tt>pairs()</tt> does not result in the same order?</dt>
+<dd>The order of table iteration is explicitly <b>undefined</b> by
+the Lua language standard.<br>
+Different Lua implementations or versions may use different orders for
+otherwise identical tables. Different ways of constructing a table may
+result in different orders, too.<br>
+Due to improved VM security, LuaJIT 2.1 may even use a different order
+on separate VM invocations or when string keys are newly interned.<br><br>
+If your program relies on a deterministic order, it has a bug. Rewrite it,
+so it doesn't rely on the key order. Or sort the table keys, if you must.
 </dl>
 
 <dl id="sandbox">
