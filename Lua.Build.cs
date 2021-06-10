@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Anton 'maza4aka' Yasnov. All Rights Reserved.
 
 using System.IO;
 
